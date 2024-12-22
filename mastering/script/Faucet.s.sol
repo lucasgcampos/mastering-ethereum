@@ -2,11 +2,16 @@
 pragma solidity ^0.8.18;
 
 import {Script, console} from "forge-std/Script.sol";
+import {Faucet} from "../src/Faucet.sol";
 
 contract FaucetScript is Script {
+    Faucet faucet;
+
     function setUp() public {}
 
     function run() public {
-        vm.broadcast();
+        vm.startBroadcast();
+        faucet = new Faucet();
+        vm.stopBroadcast();
     }
 }

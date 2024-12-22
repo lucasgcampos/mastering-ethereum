@@ -11,4 +11,6 @@ contract Faucet {
     function balance() view external returns(uint) {
         return address(this).balance;
     }
+
+    receive() external payable {}
 }
