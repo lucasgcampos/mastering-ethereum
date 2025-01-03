@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 contract Faucet {
 
     function withdraw(uint withdraw_amount) external {
-        require(withdraw_amount <= 1 ether);
+        require(withdraw_amount <= 0.1 ether);
         payable(msg.sender).transfer(withdraw_amount);
     }
 
