@@ -18,9 +18,13 @@ contract Faucet {
         return address(this).balance;
     }
 
-    function destroy() public {
-        require(msg.sender == owner);
+    function destroy() public onlyOwner {
         selfdestruct(payable(owner));
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
     }
 
     receive() external payable {}
