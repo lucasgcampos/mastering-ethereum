@@ -7,7 +7,7 @@ contract EtherStore {
     mapping(address => uint) public lastWithdrawTime;
     mapping(address => uint) public balances;
 
-    function depositFunds() public payable() {
+    function depositFunds() public payable {
         balances[msg.sender] += msg.value;
     }
 
@@ -19,10 +19,12 @@ contract EtherStore {
         require(_weiToWithdraw <= withdrawalLimit);
 
         // time allowed
-        require(now >= lastWithdrawTime + 1 weeks);
+        require(block.timestamp >= lastWithdrawTime[msg.sender] + 1 weeks);
 
-        require(msg.sender.call.value(_weiToWithdraw)());
+        (bool success, ) = msg.sender.call{value: _weiToWithdraw}("");
+        require(success);
+        
         balances[msg.sender] -= _weiToWithdraw;
-        lastWithdrawTime[msg.sender] = now;
+        lastWithdrawTime[msg.sender] = block.timestamp;
     }
 }
