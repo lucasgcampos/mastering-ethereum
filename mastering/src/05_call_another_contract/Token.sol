@@ -14,8 +14,10 @@ contract Token is Mortal {
         // _faucet.withdraw(0.1 ether);
 
         // using a low-level call function
-        bool isOk = _contract.call("withdraw", 0.1 ether);
-        if (!isOK) {
+        (bool isOk, ) = _contract.call{value: 0.1 ether}(
+            abi.encodeWithSignature("withdraw()")
+        );
+        if (!isOk) {
             revert("Withdrawal from faucet failed");
         }
     }

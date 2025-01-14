@@ -8,7 +8,7 @@ contract Lotto {
 
     function sendToWinner() public {
         require(!payedOut);
-        (bool response, ) = payable(winner).send(winAmount);
+        bool response = payable(winner).send(winAmount);
         require(response);
         payedOut = true;
     }
