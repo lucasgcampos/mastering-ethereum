@@ -17,11 +17,9 @@ To run the code examples, you will need to install:
 - [Foundry](https://book.getfoundry.sh/)*  
 - [Metamask](https://metamask.io/) (Browser extension)  
 
-*The book use Truffle and Ganache to execute the smartcontracts, but I adjust the samples and use Foundry.
+**Note:** The book uses Truffle and Ganache to execute the smart contracts, but I have adjusted the samples to use Foundry instead.
 
 ## 📄 License
-
-This repository is licensed under the MIT license. Note that the book's content is subject to the original authors' licensing terms.
 
 This repository is licensed under the [MIT](LICENSE) license. Note that the book's content is subject to the original authors' licensing terms.
 
